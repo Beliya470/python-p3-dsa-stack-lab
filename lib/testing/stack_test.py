@@ -52,10 +52,17 @@ class TestStack:
         assert(stk.size() == 1)
         assert(stk.pop() == 1)
         stk.push(1)
-        stk.push(2)
+    
+    # Ensure that we can't push another item onto a full stack.
+        try:
+            stk.push(2)
+        except Exception as e:
+            assert str(e) == "StackOverflow: Stack limit reached."
+    
         assert(stk.full())
         assert(stk.size() == 1)
         assert(stk.pop() == 1)
+
 
     def test_search(self):
         '''Test Stack search() method. How far is the element in the stack? '''
